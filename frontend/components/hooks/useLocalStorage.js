@@ -8,5 +8,11 @@ export const useLocalStorage = (key, initialValue) => {
         window.localStorage.setItem(key, JSON.stringify(initialValue));
         return initialValue;
     });
-    return [darkMode, setDarkMode];
+
+    const setStoredDarkMode = value => {
+        setDarkMode(value);
+        window.localStorage.setItem(key, JSON.stringify(value));
+    }
+
+    return [darkMode, setStoredDarkMode];
 }
